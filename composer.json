@@ -1,0 +1,63 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^11.0|^12.0",
+        "laravel/tinker": "^2.9"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/breeze": "^2.3",
+        "laravel/pail": "^1.1",
+        "laravel/sail": "^1.26",
+        "laravel/tinker": "^2.9",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "nunomaduro/termwind": "^2.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "App\\Http\\Controllers\\Admin\\": "app/Http/Controllers/adminControlller/",
+            "App\\Http\\Controllers\\Tenant\\": "app/Http/Controllers/tenantControlllers/",
+            "App\\Http\\Controllers\\TenantUser\\": "app/Http/Controllers/tenantUserControlllers/",
+            "App\\Http\\Requests\\Admin\\": "app/Http/Requests/admin/",
+            "App\\Http\\Requests\\Tenant\\": "app/Http/Requests/tenant/",
+            "App\\Http\\Requests\\TenantUser\\": "app/Http/Requests/tenantUser/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
